@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome</title>
+    </head>
+    <body>
+        <h3>Welcome to Update Scale Settings</h3>
+        <form method="post">
+            {% csrf_token %}
+            <label>Scale ID:</label>
+            <input type="text" name="scale_id" size="30"><br /><br />
+            <label>Time:</label>
+            <input type="number" name="time" size="30"><br /><br />
+            <button style="margin-left:150px;" type="submit">Update</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome</title>
+    </head>
+    <body>
+        <h3>GET DOWELL APIKEY</h3>
+        <form method="post">
+            {% csrf_token %}
+            <label>Name:</label>
+            <input type="text" name="name" size="30"><br /><br />
+            <label>Email:</label>
+            <input type="text" name="email" size="30"><br /><br />
+            <button style="margin-left:150px;" type="submit">Get Key</button>
+        </form>
+        {% if response_text %}
+        <h3>{{response_text}}</h3>
+        {% else %}
+        <p>Your response will display here!</p>
+        {% endif %}
+    </body>
+</html>

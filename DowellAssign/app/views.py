@@ -11,6 +11,8 @@ from django.shortcuts import render
 
 
 def contact_form(request):
+    # Extract data from the request.POST. Accept from Users
+    #using django.utils.html escape to validate the incoming request for security purpose
     if request.method == "POST":
         to_email = escape(request.POST.get("email"))
         to_name = escape(request.POST.get("name"))
@@ -19,49 +21,26 @@ def contact_form(request):
         subject = "From Contact US page"
         body = escape(request.POST.get("message"))
 
+        #call to api key from .secretekeys file
         api_key = API_KEY
 
+        #calling the validating function and store resonse in validate_response
         validate_response = validate_mail(api_key, to_email, to_name, from_name, from_email, subject, body)
 
+        #checking if email is valid before sending the mail
         if validate_response['success'] == True:
+            #calling the send email function from library to send the mail and store the response in response_text
             response_text = send_email(api_key, to_email, to_name, from_name, from_email, subject, body)
 
-            messages.success(request, "Email sent successfully!")
+            if response_text['success'] == True: #if message sent successfully return a message
+                messages.success(request, "Email sent successfully!")
+            else:
+                messages.error(request, "Error!")
         else:
 
             messages.error(request, "Error!")
-
+        #rendering the html page
         return render(request, "index.html")
     else:
+        #rendering the html page
         return render(request, "index.html")
-
-
-
-def send_email_view(request):
-    if request.method == "POST":
-        to_email = escape(request.POST.get("to_email"))
-        to_name = escape(request.POST.get("to_name"))
-        from_name = escape(request.POST.get("from_name"))
-        from_email = escape(request.POST.get("from_email"))
-        subject = escape(request.POST.get("subject"))
-        body = escape(request.POST.get("body"))
-
-        api_key = API_KEY
-
-        validate_response = validate_mail(api_key, to_email, to_name, from_name, from_email, subject, body)
-
-        if validate_response['success'] == True:
-            response_text = send_email(api_key, to_email, to_name, from_name, from_email, subject, body)
-
-            messages.success(request, "Email sent successfully!")
-        else:
-            messages.error(request, "Error!")
-
-        return render(request, "sendmail.html")
-    else:
-        return render(request, "sendmail.html")
-
-
-
-
-    

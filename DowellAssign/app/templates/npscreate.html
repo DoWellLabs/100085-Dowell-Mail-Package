@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome</title>
+    </head>
+    <body>
+        <h3>Welcome to create NPS</h3>
+        <form method="post">
+            {% csrf_token %}
+            <label>Scale ID</label>
+            <input type="text" name="scale_id" size="30">
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
