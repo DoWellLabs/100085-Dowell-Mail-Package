@@ -1,0 +1,7 @@
+setup.py
+mayor_isaac_libraries.egg-info/PKG-INFO
+mayor_isaac_libraries.egg-info/SOURCES.txt
+mayor_isaac_libraries.egg-info/dependency_links.txt
+mayor_isaac_libraries.egg-info/requires.txt
+mayor_isaac_libraries.egg-info/top_level.txt
+mayor_isaac_library/dowell_nps_scale_api_call.py
