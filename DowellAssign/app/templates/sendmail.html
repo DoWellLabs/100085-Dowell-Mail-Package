@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome</title>
+    </head>
+    <body>
+        <h3>DOWELL SEND MAIL</h3>
+        <form method="post">
+            {% csrf_token %}
+            {% comment %} <label>APIKEY:</label>
+            <input type="text" name="api_key" value="e24aefa6-662c-40fd-984c-1160a6d28c85" size="35" Readonly><br /><br /> {% endcomment %}
+            <label>To Email:</label>
+            <input type="text" name="to_email" size="30"><br /><br />
+            <label>To Name:</label>
+            <input type="text" name="to_name" size="30"><br /><br />
+            <label>From Name:</label>
+            <input type="text" name="from_name" size="30"><br /><br />
+            <label>From Email:</label>
+            <input type="text" name="from_email" size="30"><br /><br />
+            <label>Subject:</label>
+            <input type="text" name="subject" size="30"><br /><br />
+            <label>Message/Email body:</label><br />
+            <textarea name="body" rows="4" cols="50"></textarea><br /><br />
+            <button style="margin-left:150px;" type="submit">Sendmail</button>
+        </form>
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </body>
+</html>
