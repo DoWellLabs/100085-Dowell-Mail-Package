@@ -1,4 +1,6 @@
+.env
 LICENCE
+LICENSE
 MANIFEST.in
 README.rst
 setup.cfg
